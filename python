@@ -1,0 +1,46 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# Función para validar que solo se ingresen letras
+def validar_letras(event):
+    char = event.char
+    if not char.isalpha() and not char.isspace():
+        messagebox.showwarning("Entrada inválida", "Solo se permiten letras.")
+        return "break"
+
+# Función para validar que solo se ingresen números
+def validar_numeros(event):
+    char = event.char
+    if not char.isdigit() and not char.isspace():
+        messagebox.showwarning("Entrada inválida", "Solo se permiten números.")
+        return "break"
+
+# Crear la ventana principal
+ventana = tk.Tk()
+ventana.title("Validación de Entradas")
+
+# Crear los Labels (equivalentes a los labels de tu proyecto en C#)
+tk.Label(ventana, text="Solo Letras 1:").pack()
+tk.Label(ventana, text="Solo Letras 2:").pack()
+tk.Label(ventana, text="Solo Números 1:").pack()
+tk.Label(ventana, text="Solo Números 2:").pack()
+
+# Crear los Entries (equivalentes a los TextBox de tu proyecto en C#)
+entrada_letras1 = tk.Entry(ventana)
+entrada_letras1.pack()
+entrada_letras1.bind("<KeyPress>", validar_letras)  # Asociar la validación de letras
+
+entrada_letras2 = tk.Entry(ventana)
+entrada_letras2.pack()
+entrada_letras2.bind("<KeyPress>", validar_letras)  # Asociar la validación de letras
+
+entrada_numeros1 = tk.Entry(ventana)
+entrada_numeros1.pack()
+entrada_numeros1.bind("<KeyPress>", validar_numeros)  # Asociar la validación de números
+
+entrada_numeros2 = tk.Entry(ventana)
+entrada_numeros2.pack()
+entrada_numeros2.bind("<KeyPress>", validar_numeros)  # Asociar la validación de números
+
+# Ejecutar la ventana
+ventana.mainloop()
